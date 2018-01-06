@@ -1,11 +1,11 @@
 import React, { Component } from 'react';
-import {} from 'react-webcam';
+import Webcam from 'react-webcam';
 
 class App extends Component {
   render() {
     return (
       <div>
-        Hello, World!
+        <Webcam audio={false}/>
       </div>
     );
   }
