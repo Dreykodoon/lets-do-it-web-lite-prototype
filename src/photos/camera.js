@@ -1,5 +1,8 @@
 import React, { Component } from 'react';
+import PropTypes from 'prop-types';
 import Webcam from 'react-webcam';
+import { connect } from 'react-redux';
+import { addPhoto } from './photo-actions';
 
 const styles = {
     container: {
@@ -23,8 +26,7 @@ const styles = {
 class Camera extends Component {
     takePhoto() {
         const { webcam } = this.state;
-        const imageSrc = webcam.getScreenshot();
-        console.log(imageSrc);
+        this.props.addPhoto({photoSrc: webcam.getScreenshot()})
     }
 
     setRef = (webcam) => {
@@ -41,4 +43,14 @@ class Camera extends Component {
     }
 };
 
-export default Camera;
+Camera.propTypes = {
+    addPhoto: PropTypes.func,
+};
+
+const mapDispatchToProps = (dispatch) => {
+    return {
+        addPhoto: (photo) => dispatch(addPhoto(photo)),
+    };
+};
+
+export default connect(null, mapDispatchToProps)(Camera);

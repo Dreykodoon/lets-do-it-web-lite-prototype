@@ -1,8 +1,8 @@
 import React, { Component } from 'react';
 import {BrowserRouter as Router, Route, Switch, Redirect} from 'react-router-dom';
 import Layout from './layout/layout';
-import Camera from './camera';
-import Gallery from './gallery';
+import Camera from './photos/camera';
+import Gallery from './photos/gallery';
 
 class App extends Component {
   render() {
