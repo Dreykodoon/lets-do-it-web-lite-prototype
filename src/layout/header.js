@@ -5,8 +5,9 @@ class Header extends Component {
     render() {
         return (
             <div>
-                <Link to='/camera'>Camera</Link>
-                <Link to='/gallery'>Gallery</Link>
+                <Link style={{display: 'inline-block'}} to='/camera'>Camera</Link>
+                <div style={{width: '15px', display: 'inline-block'}}></div>
+                <Link style={{display: 'inline-block'}} to='/gallery'>Gallery</Link>
             </div>
         );
     }

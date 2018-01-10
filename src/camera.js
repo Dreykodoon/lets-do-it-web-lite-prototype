@@ -21,11 +21,21 @@ const styles = {
   };
 
 class Camera extends Component {
+    takePhoto() {
+        const { webcam } = this.state;
+        const imageSrc = webcam.getScreenshot();
+        console.log(imageSrc);
+    }
+
+    setRef = (webcam) => {
+        this.setState({ webcam });
+    }
+
     render() {
         return (
             <div style={styles.container}>
-                <Webcam style={styles.camera} audio={false}/>
-                <button style={styles.button}>Click me</button>
+                <Webcam style={styles.camera} audio={false} ref={this.setRef}/>
+                <button style={styles.button} onClick={this.takePhoto.bind(this)}>Click me</button>
             </div>
         );
     }
