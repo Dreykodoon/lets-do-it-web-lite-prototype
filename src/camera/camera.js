@@ -2,7 +2,7 @@ import React, { Component } from 'react';
 import PropTypes from 'prop-types';
 import Webcam from 'react-webcam';
 import { connect } from 'react-redux';
-import { addPhoto } from './photo-actions';
+import { addPhoto } from './camera-actions';
 
 const styles = {
     container: {
@@ -26,7 +26,7 @@ const styles = {
 class Camera extends Component {
     takePhoto() {
         const { webcam } = this.state;
-        this.props.addPhoto({src: webcam.getScreenshot()})
+        this.props.addPhoto(webcam.getScreenshot());
     }
 
     setRef = (webcam) => {

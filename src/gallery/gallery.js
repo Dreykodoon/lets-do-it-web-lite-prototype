@@ -2,8 +2,13 @@ import React, { Component } from 'react';
 import PropTypes from 'prop-types';
 import { connect } from 'react-redux';
 import Photo from './photo';
+import { getPhotos } from './gallery-actions';
 
 class Gallery extends Component {
+    componentWillMount() {
+        this.props.loadPhotos();
+    }
+
     render() {
         const { photos } = this.props;
         return (
@@ -17,6 +22,8 @@ class Gallery extends Component {
 
 Gallery.propTypes = {
     addPphotoshoto: PropTypes.array,
+    loadPhotos: PropTypes.func,
+    dispatch: PropTypes.func,
 };
 
 const mapStateToProps = (state) => {
@@ -25,4 +32,10 @@ const mapStateToProps = (state) => {
     };
 };
 
-export default connect(mapStateToProps)(Gallery);
+const mapDispatchToProps = (dispatch) => {
+    return {
+        loadPhotos: (photo) => dispatch(getPhotos(photo)),
+    };
+};
+
+export default connect(mapStateToProps, mapDispatchToProps)(Gallery);

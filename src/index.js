@@ -2,11 +2,10 @@ import React from 'react';
 import ReactDOM from 'react-dom';
 import { Provider } from 'react-redux';
 import App from './app';
-import configureStore from './store-configuration';
+import store from './store';
+import configureLocalforage from './localforage-config';
 import './index.css';
 
-const initialState = {photos: []};
-
-const store = configureStore(initialState);
+configureLocalforage();
 
 ReactDOM.render(<Provider store={store}><App/></Provider>, document.getElementById('root'));
