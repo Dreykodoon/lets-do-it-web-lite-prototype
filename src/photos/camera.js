@@ -26,7 +26,7 @@ const styles = {
 class Camera extends Component {
     takePhoto() {
         const { webcam } = this.state;
-        this.props.addPhoto({photoSrc: webcam.getScreenshot()})
+        this.props.addPhoto({src: webcam.getScreenshot()})
     }
 
     setRef = (webcam) => {
