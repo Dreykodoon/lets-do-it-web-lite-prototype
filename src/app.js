@@ -1,33 +1,22 @@
 import React, { Component } from 'react';
-import Webcam from 'react-webcam';
-
-const styles = {
-  container: {
-    marginLeft: 'auto',
-    marginRight: 'auto',
-    width: '50%',
-    height: '500px',
-  },
-  camera: {
-    position: 'absolute',
-  },
-  button: {
-    position: 'relative',
-    top: '80%',
-    left: '50%',
-    width: '100px',
-    marginLeft: '-50px'
-
-  },
-};
+import {BrowserRouter as Router, Route, Switch, Redirect} from 'react-router-dom';
+import Layout from './layout/layout';
+import Camera from './camera';
+import Gallery from './gallery';
 
 class App extends Component {
   render() {
     return (
-      <div style={styles.container}>
-        <Webcam style={styles.camera} audio={false}/>
-        <button style={styles.button}>Click me</button>
-      </div>
+      <Router>
+        <Layout>
+          <Switch>
+            <Route exact path='/camera' component={Camera}/>
+            <Route exact path='/gallery' component={Gallery}/>
+            <Redirect to='/camera'/>
+          </Switch>
+        </Layout>
+      </Router>
+      
     );
   }
 }
