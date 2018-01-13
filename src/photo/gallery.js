@@ -2,7 +2,7 @@ import React, { Component } from 'react';
 import PropTypes from 'prop-types';
 import { connect } from 'react-redux';
 import Photo from './photo';
-import { getPhotos } from './gallery-actions';
+import { getPhotos } from './photo-actions';
 
 class Gallery extends Component {
     componentWillMount() {

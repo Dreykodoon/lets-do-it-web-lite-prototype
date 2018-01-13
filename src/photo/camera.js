@@ -2,7 +2,7 @@ import React, { Component } from 'react';
 import PropTypes from 'prop-types';
 import Webcam from 'react-webcam';
 import { connect } from 'react-redux';
-import { addPhoto } from './camera-actions';
+import { addPhoto } from './photo-actions';
 
 const styles = {
     topContainer: {
