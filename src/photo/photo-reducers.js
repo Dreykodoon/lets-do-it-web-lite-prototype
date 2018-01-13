@@ -7,7 +7,8 @@ export function reducers(state = {photos: [], photoIds: []}, {type, payload}) {
             return Object.assign({}, state, {photoIds: photoIds.concat([payload])});
         }
         case LOAD_PHOTOS: {
-            return Object.assign({}, state, {photos: payload});
+            const photoIds = state.photos.map((photo) => photo.id);
+            return Object.assign({}, state, {photos: payload, photoIds});
         }
         default: {
             return state;
