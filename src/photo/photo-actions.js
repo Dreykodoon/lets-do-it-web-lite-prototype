@@ -19,7 +19,9 @@ export function addPhoto(photoSrc) {
 export function loadPhotos() {
     return (dispatch) => {
         let photos = [];
-        localforage.iterate(value => photos.push(value))
+        localforage.iterate((value) => {
+            photos.push(value);
+        })
             .then(() => dispatch({
                 type: LOAD_PHOTOS,
                 payload: photos,
