@@ -5,14 +5,19 @@ import { connect } from 'react-redux';
 import { addPhoto } from './camera-actions';
 
 const styles = {
-    container: {
+    topContainer: {
       marginLeft: 'auto',
       marginRight: 'auto',
       width: '50%',
       height: '500px',
     },
-    camera: {
-      position: 'absolute',
+    webcamContainer: {
+        position: 'absolute',
+        left: '50%',
+    },
+    webcam: {
+      position: 'relative',
+      left: '-50%',
     },
     button: {
       position: 'relative',
@@ -24,19 +29,26 @@ const styles = {
   };
 
 class Camera extends Component {
+    constructor(props) {
+        super(props);
+        this.setRef = (webcam) => this.setState({ webcam });
+    }
+
     takePhoto() {
         const { webcam } = this.state;
         this.props.addPhoto(webcam.getScreenshot());
     }
 
-    setRef = (webcam) => {
+    setRef(webcam) {
         this.setState({ webcam });
     }
 
     render() {
         return (
-            <div style={styles.container}>
-                <Webcam style={styles.camera} audio={false} ref={this.setRef}/>
+            <div style={styles.topContainer}>
+                <div style={styles.webcamContainer}>
+                    <Webcam style={styles.webcam} audio={false} ref={this.setRef}/>
+                </div>
                 <button style={styles.button} onClick={this.takePhoto.bind(this)}>Click me</button>
             </div>
         );
