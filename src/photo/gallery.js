@@ -18,12 +18,13 @@ class Gallery extends Component {
             </div>
         );
     }
-};
+}
 
 Gallery.propTypes = {
     addPphotoshoto: PropTypes.array,
     loadPhotos: PropTypes.func,
     dispatch: PropTypes.func,
+    photos: PropTypes.array,
 };
 
 const mapStateToProps = (state) => {

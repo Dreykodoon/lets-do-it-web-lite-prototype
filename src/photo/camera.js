@@ -6,27 +6,27 @@ import { addPhoto } from './photo-actions';
 
 const styles = {
     topContainer: {
-      marginLeft: 'auto',
-      marginRight: 'auto',
-      width: '50%',
-      height: '500px',
+        marginLeft: 'auto',
+        marginRight: 'auto',
+        width: '50%',
+        height: '500px',
     },
     webcamContainer: {
         position: 'absolute',
         left: '50%',
     },
     webcam: {
-      position: 'relative',
-      left: '-50%',
+        position: 'relative',
+        left: '-50%',
     },
     button: {
-      position: 'relative',
-      top: '80%',
-      left: '50%',
-      width: '100px',
-      marginLeft: '-50px'
+        position: 'relative',
+        top: '80%',
+        left: '50%',
+        width: '100px',
+        marginLeft: '-50px'
     },
-  };
+};
 
 class Camera extends Component {
     constructor(props) {
@@ -53,7 +53,7 @@ class Camera extends Component {
             </div>
         );
     }
-};
+}
 
 Camera.propTypes = {
     addPhoto: PropTypes.func,

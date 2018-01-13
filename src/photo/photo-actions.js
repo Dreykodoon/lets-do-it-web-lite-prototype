@@ -12,7 +12,7 @@ export function addPhoto(photoSrc) {
     return {
         type: ADD_PHOTO_ID,
         payload: photoId,
-    }
+    };
 }
 
 export function getPhotos() {
@@ -21,12 +21,12 @@ export function getPhotos() {
         localForage.iterate(value => photos.push(value))
             .then(() => dispatch(loadPhotos(photos)))
             .catch(err => console.log(err));
-    }
+    };
 }
 
 function loadPhotos(photos) {
     return {
         type: LOAD_PHOTOS,
         payload: photos,
-    }
+    };
 }

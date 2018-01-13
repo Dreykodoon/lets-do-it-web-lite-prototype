@@ -5,20 +5,19 @@ import Camera from './photo/camera';
 import Gallery from './photo/gallery';
 
 class App extends Component {
-  render() {
-    return (
-      <Router>
-        <Layout>
-          <Switch>
-            <Route exact path='/camera' component={Camera}/>
-            <Route exact path='/gallery' component={Gallery}/>
-            <Redirect to='/camera'/>
-          </Switch>
-        </Layout>
-      </Router>
-      
-    );
-  }
+    render() {
+        return (
+            <Router>
+                <Layout>
+                    <Switch>
+                        <Route exact path='/camera' component={Camera}/>
+                        <Route exact path='/gallery' component={Gallery}/>
+                        <Redirect to='/camera'/>
+                    </Switch>
+                </Layout>
+            </Router>
+        );
+    }
 }
 
 export default App;

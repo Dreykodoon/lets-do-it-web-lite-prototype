@@ -4,10 +4,6 @@ import { reducers } from './photo/photo-reducers';
 
 const initialState = {photos: [], photoIds: []};
 
-const store = configureStore(initialState);
-
-function configureStore(initialState) {
-    return createStore(reducers, initialState, applyMiddleware(thunk));
-}
+const store = createStore(reducers, initialState, applyMiddleware(thunk));
 
 export default store;
