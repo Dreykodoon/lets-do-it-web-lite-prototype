@@ -2,9 +2,19 @@ import React, { Component } from 'react';
 import PropTypes from 'prop-types';
 import { connect } from 'react-redux';
 import Photo from './photo';
-import { getPhotos } from './photo-actions';
+import { loadPhotos, deletePhotos } from './photo-actions';
 
 class Gallery extends Component {
+    constructor(props) {
+        super(props);
+        this.deletePhotos = this.deletePhotos.bind(this);
+    }
+
+    deletePhotos() {
+        const {photos, removeAllPhotos} = this.props;
+        removeAllPhotos(photos);
+    }
+
     componentWillMount() {
         this.props.loadPhotos();
     }
@@ -13,17 +23,19 @@ class Gallery extends Component {
         const { photos } = this.props;
         return (
             <div>
-                A series of trash photos.
-                {photos.map((photo, index) => <Photo key={index} src={photo.src}/>)}
+                <div>
+                    A series of trash photos.
+                    {photos.map((photo, index) => <Photo key={index} src={photo.src}/>)}
+                </div>
+                <button onClick={this.deletePhotos}>Delete all photos</button>
             </div>
         );
     }
 }
 
 Gallery.propTypes = {
-    addPphotoshoto: PropTypes.array,
     loadPhotos: PropTypes.func,
-    dispatch: PropTypes.func,
+    removeAllPhotos: PropTypes.func,
     photos: PropTypes.array,
 };
 
@@ -35,7 +47,8 @@ const mapStateToProps = (state) => {
 
 const mapDispatchToProps = (dispatch) => {
     return {
-        loadPhotos: (photo) => dispatch(getPhotos(photo)),
+        loadPhotos: () => dispatch(loadPhotos()),
+        removeAllPhotos: (photos) => dispatch(deletePhotos(photos)),
     };
 };
 
