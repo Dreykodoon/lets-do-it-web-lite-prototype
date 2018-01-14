@@ -1,14 +1,15 @@
 import { ADD_PHOTO, LOAD_PHOTOS, DELETE_PHOTOS } from './photo-actions';
 
-const initialState = {photos: []};
+const initialState = {photos: [], photoIdCounter: 0};
 
 export function reducers(state = initialState, {type, payload}) {
     switch (type) {
         case ADD_PHOTO: {
-            return Object.assign({}, state, {photos: state.photos.concat([payload])});
+            const {photos, photoIdCounter} = state;
+            return Object.assign({}, state, {photos: photos.concat([payload]), photoIdCounter: photoIdCounter + 1});
         }
         case LOAD_PHOTOS: {
-            return Object.assign({}, state, {photos: payload});
+            return Object.assign({}, state, {photos: payload, photoIdCounter: payload.length});
         }
         case DELETE_PHOTOS: {
             return Object.assign({}, initialState);

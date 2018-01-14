@@ -2,7 +2,7 @@ import React, { Component } from 'react';
 import PropTypes from 'prop-types';
 import { connect } from 'react-redux';
 import Photo from './photo';
-import { loadPhotos, deletePhotos } from './photo-actions';
+import { deletePhotos } from './photo-actions';
 
 class Gallery extends Component {
     constructor(props) {
@@ -13,10 +13,6 @@ class Gallery extends Component {
     deletePhotos() {
         const {photos, removeAllPhotos} = this.props;
         removeAllPhotos(photos);
-    }
-
-    componentWillMount() {
-        this.props.loadPhotos();
     }
 
     render() {
@@ -47,7 +43,6 @@ const mapStateToProps = (state) => {
 
 const mapDispatchToProps = (dispatch) => {
     return {
-        loadPhotos: () => dispatch(loadPhotos()),
         removeAllPhotos: (photos) => dispatch(deletePhotos(photos)),
     };
 };
