@@ -1,18 +1,18 @@
 import localforage from 'localforage';
 import { generatePhotoId } from './utils';
 
-export const ADD_PHOTO_ID = 'ADD_PHOTO_ID';
+export const ADD_PHOTO = 'ADD_PHOTO';
 export const LOAD_PHOTOS = 'LOAD_PHOTOS';
 export const DELETE_PHOTOS = 'DELETE_PHOTOS';
 
 export function addPhoto(photoSrc) {
-    const photoId = generatePhotoId();
-    localforage.setItem(photoId, {id: photoId, src: photoSrc})
+    const photo = {id: generatePhotoId(), src: photoSrc};
+    localforage.setItem(photo.id, photo)
         .then(() => console.log('Photo persisted succesfully!'))
         .catch(err => console.log(err));
     return {
-        type: ADD_PHOTO_ID,
-        payload: photoId,
+        type: ADD_PHOTO,
+        payload: photo,
     };
 }
 
